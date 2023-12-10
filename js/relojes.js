@@ -1,5 +1,5 @@
 //Detalle Precios
-const bicicletas = [
+const relojes = [
   {
     id:1,
     nombre: "Kit Orange",

@@ -7,7 +7,7 @@ const totalesContainer = document.getElementById("totales");
 // Base de productos - localstorage
 function crearTarjetasProductosCarrito() {
   contenedorTarjetas.innerHTML = "";
-  const productos = PL.parse(localStorage.getItem("relojes"));
+  const productos = JSON.parse(localStorage.getItem("relojes"));
   if (productos && productos.length > 0) {
     productos.forEach((producto) => {
       const nuevoReloj = document.createElement("div");
@@ -31,7 +31,7 @@ function crearTarjetasProductosCarrito() {
           crearTarjetasProductosCarrito();
           actualizarTotales();
         });
-      nuevaBicicleta
+      nuevoReloj
         .getElementsByTagName("button")[1]
         .addEventListener("click", (e) => {
           const cantidadElement = e.target.parentElement.getElementsByClassName("cantidad")[0];
@@ -49,7 +49,7 @@ crearTarjetasProductosCarrito();
 
 //Actualiza carrito de compra con total precio-unidades
 function actualizarTotales() {
-  const productos = PL.parse(localStorage.getItem("relojes"));
+  const productos = JSON.parse(localStorage.getItem("relojes"));
   let cantidad = 0;
   let precio = 0;
   if (productos && productos.length > 0) {
@@ -74,7 +74,7 @@ document.getElementById("reiniciar").addEventListener("click", () => {
 
 //Mensaje carrito vacio
 function revisarMensajeVacio() {
-  const productos = PL.parse(localStorage.getItem("relojes"));
+  const productos = JSON.parse(localStorage.getItem("relojes"));
   carritoVacioElement.classList.toggle("escondido", productos);
   totalesContainer.classList.toggle("escondido", !productos);
 }
